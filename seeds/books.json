@@ -1,0 +1,12 @@
+[
+  { "title": "Dune", "author": "Frank Herbert", "genre": "Sci-Fi", "publishedYear": 1965, "rating": 5 },
+  { "title": "The Hobbit", "author": "J.R.R. Tolkien", "genre": "Fantasy", "publishedYear": 1937, "rating": 5 },
+  { "title": "1984", "author": "George Orwell", "genre": "Dystopian", "publishedYear": 1949, "rating": 4.7 },
+  { "title": "To Kill a Mockingbird", "author": "Harper Lee", "genre": "Fiction", "publishedYear": 1960, "rating": 4.8 },
+  { "title": "The Pragmatic Programmer", "author": "Andrew Hunt, David Thomas", "genre": "Programming", "publishedYear": 1999, "rating": 4.6 },
+  { "title": "Clean Code", "author": "Robert C. Martin", "genre": "Programming", "publishedYear": 2008, "rating": 4.4 },
+  { "title": "Sapiens", "author": "Yuval Noah Harari", "genre": "History", "publishedYear": 2011, "rating": 4.5 },
+  { "title": "The Name of the Wind", "author": "Patrick Rothfuss", "genre": "Fantasy", "publishedYear": 2007, "rating": 4.7 },
+  { "title": "Project Hail Mary", "author": "Andy Weir", "genre": "Sci-Fi", "publishedYear": 2021, "rating": 4.9 },
+  { "title": "Atomic Habits", "author": "James Clear", "genre": "Self-Help", "publishedYear": 2018, "rating": 4.6 }
+]

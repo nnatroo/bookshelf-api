@@ -1,1 +1,62 @@
-# BookShelf API\n\n## Overview\nThe BookShelf API is a RESTful CRUD API for managing a personal book collection. Users can perform operations such as adding, updating, deleting, and retrieving books.\n\n## Setup Instructions\n1. **Clone the repository**: `git clone <repository-url>`\n2. **Install dependencies**: Navigate to the project directory and run `npm install` to install required packages.\n3. **Set up environment variables**: Create a `.env` file using the `.env.example` template.\n4. **Run the API**: Use `npm start` to run the server in production mode, or `npm run dev` for development mode.\n\n## Endpoints\n| Method | Endpoint                       | Description                          |\n|--------|-------------------------------|--------------------------------------|\n| GET    | /api/books                   | Retrieve all books                  |\n| GET    | /api/books/:id                | Retrieve a book by ID               |\n| POST   | /api/books                   | Create a new book                   |\n| PUT    | /api/books/:id                | Update a book by ID                 |\n| DELETE | /api/books/:id                | Delete a book by ID                 |\n\n## Schema Table\n- **Book**\n  - `title`: String (required)\n  - `author`: String (required)\n  - `genre`: String (optional)\n  - `publishedYear`: Number (optional)\n  - `rating`: Number (optional)\n\n## Curl Examples\n### Get All Books\n```bash\ncurl -X GET http://localhost:5000/api/books\n```\n### Create a Book\n```bash\ncurl -X POST http://localhost:5000/api/books \n-H 'Content-Type: application/json' \n-d '{"title": "Your Book Title", "author": "Your Author"}'\n```\n### Update a Book\n```bash\ncurl -X PUT http://localhost:5000/api/books/:id \n-H 'Content-Type: application/json' \n-d '{"title": "Updated Book Title", "author": "Updated Author"}'\n```\n### Delete a Book\n```bash\ncurl -X DELETE http://localhost:5000/api/books/:id\n```
+# BookShelf API
+
+A RESTful CRUD API for managing a personal book collection.
+
+## Stack
+
+- **Express.js** — HTTP server & routing
+- **Mongoose** — MongoDB ODM
+- **dotenv** — environment configuration
+- **express-validator** — input validation
+- **morgan** — request logging
+
+## Getting Started
+
+```bash
+npm install
+cp .env.example .env   # then edit values
+npm run dev            # or: npm start
+```
+
+By default the server listens on `PORT` (3000) and connects to `MONGODB_URI`.
+
+## Endpoints
+
+| Method | Route             | Description       |
+| ------ | ----------------- | ----------------- |
+| GET    | `/api/books`      | List all books    |
+| GET    | `/api/books/:id`  | Get a single book |
+| POST   | `/api/books`      | Create a book     |
+| PUT    | `/api/books/:id`  | Update a book     |
+| DELETE | `/api/books/:id`  | Delete a book     |
+
+Plus `GET /health` for a basic status check.
+
+## Book Schema
+
+| Field           | Type   | Notes                              |
+| --------------- | ------ | ---------------------------------- |
+| `title`         | String | required                           |
+| `author`        | String | required                           |
+| `genre`         | String | optional                           |
+| `publishedYear` | Number | optional, integer 0 .. nextYear    |
+| `rating`        | Number | optional, 0–5                      |
+| `createdAt`     | Date   | auto-set on creation               |
+
+## Seeding
+
+Populate the database with sample books (`seeds/books.json`):
+
+```bash
+npm run seed          # insert seeds, skip existing (title+author match)
+npm run seed:fresh    # wipe books collection, then insert seeds
+npm run seed:clear    # wipe books collection only
+```
+
+## Example
+
+```bash
+curl -X POST http://localhost:3000/api/books \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Dune","author":"Frank Herbert","genre":"Sci-Fi","publishedYear":1965,"rating":5}'
+```
